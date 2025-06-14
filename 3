@@ -1,0 +1,47 @@
+let team = [];
+
+function getRandomStat() {
+  return Math.floor(Math.random() * 51) + 50;
+}
+
+function createTeam() {
+  const name = document.getElementById("teamName").value.trim();
+  if (!name) {
+    alert("Entre un nom d'équipe !");
+    return;
+  }
+  team = [];
+  for (let i = 0; i < 5; i++) {
+    team.push({
+      name: "Coureur " + (i + 1),
+      montagne: getRandomStat(),
+      sprint: getRandomStat(),
+      endurance: getRandomStat()
+    });
+  }
+  document.getElementById("team-creation").style.display = "none";
+  document.getElementById("team-display").style.display = "block";
+  const list = document.getElementById("riderList");
+  list.innerHTML = "";
+  team.forEach(r => {
+    const li = document.createElement("li");
+    li.textContent = `${r.name} - Montagne: ${r.montagne}, Sprint: ${r.sprint}, Endurance: ${r.endurance}`;
+    list.appendChild(li);
+  });
+}
+
+function startRace() {
+  const results = team.map(r => ({
+    name: r.name,
+    score: r.montagne + r.sprint + r.endurance + Math.floor(Math.random() * 50)
+  }));
+  results.sort((a, b) => b.score - a.score);
+  document.getElementById("race-result").style.display = "block";
+  const list = document.getElementById("resultList");
+  list.innerHTML = "";
+  results.forEach(r => {
+    const li = document.createElement("li");
+    li.textContent = `${r.name} - Score: ${r.score}`;
+    list.appendChild(li);
+  });
+}
