@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <title>Cycling Manager Web</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <h1>Cycling Manager Web</h1>
+  <div id="game">
+    <div id="team-creation">
+      <label for="teamName">Nom de l'équipe:</label>
+      <input type="text" id="teamName" placeholder="Ex: Team Vélo">
+      <button onclick="createTeam()">Créer l'équipe</button>
+    </div>
+    <div id="team-display" style="display:none;">
+      <h2>Ton équipe</h2>
+      <ul id="riderList"></ul>
+      <button onclick="startRace()">Lancer une course</button>
+    </div>
+    <div id="race-result" style="display:none;">
+      <h2>Résultat de la course</h2>
+      <ol id="resultList"></ol>
+    </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>
